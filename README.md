@@ -1,5 +1,6 @@
 # spotify-marketupdate-playlist
 https://open.spotify.com/playlist/20TwbfnWDzKClpUOiCWQZs
+---------------
 Simple script to update spotify playlist here as new episodes are released for selected podcasts of:
 1. FT News Briefing
 2. Numbers by Barron's
