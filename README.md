@@ -1,13 +1,13 @@
 # spotify-marketupdate-playlist
 
 Simple script to update spotify playlist here as new episodes are released for selected podcasts of:
-*FT News Briefing
-*Numbers by Barron's
-*Thoughts on the Market
-*Wall Street Breakfast
-*Mad Money w/ Jim Cramer
-*Marketplace Morning Report
-*Rahapodi
-*InderesPodi
-*Leadcast
-*Stock Club
+1. FT News Briefing
+2. Numbers by Barron's
+3. Thoughts on the Market
+4. Wall Street Breakfast
+5. Mad Money w/ Jim Cramer
+6. Marketplace Morning Report
+7. Rahapodi
+8. InderesPodi
+9. Leadcast
+10. Stock Club
