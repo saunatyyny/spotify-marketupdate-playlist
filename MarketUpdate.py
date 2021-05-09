@@ -39,12 +39,12 @@ ShowList = [
 
 
 
-#for i in range(len(ShowList)):
-	#print(str(i)+" "+spotify.show_episodes(ShowList[i])['items'][0]['name'])
-	#spotify.playlist_remove_all_occurrences_of_items(id,[spotify.show_episodes(ShowList[i])['items'][0]['uri']])
-	#spotify.playlist_add_items(id, [spotify.show_episodes(ShowList[i])['items'][0]['uri']])
+for i in range(len(ShowList)):
+	print(str(i)+" "+spotify.show_episodes(ShowList[i])['items'][0]['name'])
+	spotify.playlist_remove_all_occurrences_of_items(id,[spotify.show_episodes(ShowList[i])['items'][0]['uri']])
+	spotify.playlist_add_items(id, [spotify.show_episodes(ShowList[i])['items'][0]['uri']])
 
-
+'''
 for j in range(len(playlist['items'])):
 	old_episode = playlist['items'][j]['track']
 	new_episode = spotify.show_episodes(ShowList[j])['items'][0]
@@ -52,10 +52,10 @@ for j in range(len(playlist['items'])):
 
 	if new_episode['name'] != old_episode['name']:
 		spotify.playlist_remove_all_occurrences_of_items(id, [old_episode['uri']])
-		spotify.playlist_add_items(id, [new_episode['uri']])
+		spotify.playlist_add_items(id, [new_episode['uri']],position=0)
 		print("Removed episode: " + old_episode["name"])
 		print("Added episode: " + new_episode["name"])
-
+'''
 
 
 #print(pprint.pformat(playlist['items'][0]['track']))
