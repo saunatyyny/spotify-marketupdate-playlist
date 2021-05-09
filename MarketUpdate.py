@@ -36,12 +36,21 @@ ShowList = [
 	"https://open.spotify.com/show/08c8y61kd8eW68bNVzdb6H"	#Stock Club
 	]
 
+oldlist=[]
+response = spotify.playlist_items(id,fields='items.track.uri')
+
+for x in range(len(response['items'])):
+	try:
+		asd = (response['items'][x]['track']['uri'])
+		oldlist.append(asd)
+	except TypeError:
+		pass
 
 
+spotify.playlist_remove_all_occurrences_of_items(id,oldlist)
 
 for i in range(len(ShowList)):
 	print(str(i)+" "+spotify.show_episodes(ShowList[i])['items'][0]['name'])
-	spotify.playlist_remove_all_occurrences_of_items(id,[spotify.show_episodes(ShowList[i])['items'][0]['uri']])
 	spotify.playlist_add_items(id, [spotify.show_episodes(ShowList[i])['items'][0]['uri']])
 
 '''
