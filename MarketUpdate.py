@@ -30,7 +30,7 @@ def main():
 	id = "20TwbfnWDzKClpUOiCWQZs"
 
 	playlist = spotify.playlist_items(playlist_id=id)
-	print("MarketUpdate.py started succesfully at " + str(datetime.datetime.utcnow()))
+
 
 	ShowList = [
 		"https://open.spotify.com/show/1410RabA4XOqO6IV8p0gYF",  # FT News Briefing
@@ -56,33 +56,21 @@ def main():
 			pass
 
 	spotify.playlist_remove_all_occurrences_of_items(id, oldlist)
-	print("MarketUpdate.py succesfully cleared old playlist tracks @ " + str(datetime.datetime.utcnow()))
+	print("MarketUpdate.py succesfully cleared old playlist tracks @ " + str(datetime.utcnow()))
 
 	for i in range(len(ShowList)):
 		print("Added playlist item: " + str(i) + " " + spotify.show_episodes(ShowList[i])['items'][0][
-			'name'] + " at " + str(datetime.datetime.utcnow()))
+			'name'] + " at " + str(datetime.utcnow()))
 		spotify.playlist_add_items(id, [spotify.show_episodes(ShowList[i])['items'][0]['uri']])
 
-	'''
-	for j in range(len(playlist['items'])):
-		old_episode = playlist['items'][j]['track']
-		new_episode = spotify.show_episodes(ShowList[j])['items'][0]
 
-
-		if new_episode['name'] != old_episode['name']:
-			spotify.playlist_remove_all_occurrences_of_items(id, [old_episode['uri']])
-			spotify.playlist_add_items(id, [new_episode['uri']],position=0)
-			print("Removed episode: " + old_episode["name"])
-			print("Added episode: " + new_episode["name"])
-	'''
-
-	# print(pprint.pformat(playlist['items'][0]['track']))
-
-	message = "Updated on: " + str(str(datetime.datetime.utcnow()))
+	message = "Updated on: " + str(str(datetime.utcnow()))
 	spotify.playlist_change_details(playlist_id=id, description=message)
 	print(message)
+	print('Time until next playlist update in seconds: ' + str(secs))
 
 
-
+print("MarketUpdate.py started succesfully at " + str(datetime.utcnow()))
+print('Time until next playlist update in seconds: '+str(secs))
 t = Timer(secs, main)
 t.start()
