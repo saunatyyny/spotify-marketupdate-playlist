@@ -68,7 +68,7 @@ def main():
 
 print("MarketUpdate.py started succesfully at " + str(datetime.utcnow()))
 print("--------------------------------------------------------------------------------")
-schedule.every(6).hour.at(":01").do(main)
+schedule.every(6).hours.at(":01").do(main)
 while 1:
 	schedule.run_pending()
 	time.sleep(1)
