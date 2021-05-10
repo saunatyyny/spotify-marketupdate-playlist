@@ -5,20 +5,17 @@ Date: 19.11.2020
 
 
 import os
+import time
+
 import spotipy
 import datetime
-from datetime import datetime, timedelta
-from threading import Timer
+import schedule
+from datetime import datetime
 
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 load_dotenv()
 
-x = datetime.today()
-y = x.replace(day=x.day, hour=x.hour, minute=0, second=0, microsecond=0) + timedelta(hours=1)
-delta_t = y - x
-
-secs = delta_t.total_seconds()
 
 def main():
 	spotify_user = os.environ.get("SPOTIPY_CLIENT_USERNAME")
@@ -67,10 +64,11 @@ def main():
 	message = "Updated on: " + str(str(datetime.utcnow()))
 	spotify.playlist_change_details(playlist_id=id, description=message)
 	print(message)
-	print('Time until next playlist update in seconds: ' + str(secs))
-
+	print("--------------------------------------------------------------------------------")
 
 print("MarketUpdate.py started succesfully at " + str(datetime.utcnow()))
-print('Time until next playlist update in seconds: '+str(secs))
-t = Timer(secs, main)
-t.start()
+print("--------------------------------------------------------------------------------")
+schedule.every(6).hour.at(":01").do(main)
+while 1:
+	schedule.run_pending()
+	time.sleep(1)
